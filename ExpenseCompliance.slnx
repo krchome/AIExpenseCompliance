@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="src/ExpenseCompliance.AI/ExpenseCompliance.AI.csproj" Id="90d80566-e5ff-4a79-9d43-b43e2d514c75" />
+  <Project Path="src/ExpenseCompliance.Application/ExpenseCompliance.Application.csproj" Id="f6ccc0c6-9536-4ddc-b7e4-e40417952bfe" />
+  <Project Path="src/ExpenseCompliance.Domain/ExpenseCompliance.Domain.csproj" Id="195e415c-911a-460d-a7fc-7bb3e61ec875" />
+  <Project Path="src/ExpenseCompliance.Infrastructure/ExpenseCompliance.Infrastructure.csproj" Id="ae88588e-e4d1-48a9-b2fb-6be5dbf435cb" />
+  <Project Path="src/ExpenseCompliance.Web/ExpenseCompliance.Web.csproj" Id="bf52dd1f-27d7-4061-9305-c3feb54104e2" />
+</Solution>

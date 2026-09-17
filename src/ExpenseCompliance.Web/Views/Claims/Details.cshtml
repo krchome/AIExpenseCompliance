@@ -1,0 +1,30 @@
+@model ClaimDetails
+@{
+    ViewData["Title"] = Model.ReferenceNumber;
+}
+
+<a class="back-link" asp-action="Index">← Back to claims</a>
+<div class="page-heading compact">
+    <div><p class="eyebrow">@Model.ReferenceNumber</p><h1>@Model.Merchant</h1><p class="subtitle">@Model.EmployeeName · @Model.TransactionDate.ToString("dd MMMM yyyy")</p></div>
+    <span class="status status-@Model.Status.Replace(" ", "").ToLowerInvariant()">@Model.Status</span>
+</div>
+
+<div class="details-grid">
+    <section class="panel claim-card">
+        <div class="panel-heading"><div><h2>Verified claim facts</h2><p>Employee-confirmed data remains the business input.</p></div></div>
+        <dl>
+            <div><dt>Amount</dt><dd>@Model.Currency @Model.Amount.ToString("N2")</dd></div>
+            <div><dt>Category</dt><dd>@Model.Category</dd></div>
+            <div class="wide"><dt>Business purpose</dt><dd>@Model.BusinessPurpose</dd></div>
+        </dl>
+    </section>
+    <section class="panel recommendation-card">
+        <p class="eyebrow">COMPLIANCE RECOMMENDATION</p>
+        <h2>@Model.Recommendation</h2>
+        <p class="subtitle">A recommendation is evidence for an authorised reviewer—not an approval.</p>
+        <ul>
+            @foreach (var finding in Model.PolicyFindings) { <li>@finding</li> }
+        </ul>
+        <div class="human-boundary">Human approval required</div>
+    </section>
+</div>

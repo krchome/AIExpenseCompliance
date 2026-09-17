@@ -1,0 +1,47 @@
+@model IReadOnlyList<ClaimListItem>
+@{
+    ViewData["Title"] = "Expense claims";
+    var pending = Model.Count(x => x.Status is "Under Review" or "Finance Review");
+    var approved = Model.Count(x => x.Status == "Approved");
+}
+
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">EMPLOYEE WORKSPACE</p>
+        <h1>Expense claims</h1>
+        <p class="subtitle">Track evidence, policy checks and authorised decisions.</p>
+    </div>
+    <button class="primary-button" type="button" disabled>+ New claim <span>Video 3</span></button>
+</div>
+
+<section class="metrics">
+    <article><span>Total claims</span><strong>@Model.Count</strong><small>Current demonstration data</small></article>
+    <article><span>Awaiting decision</span><strong>@pending</strong><small>Manager or Finance review</small></article>
+    <article><span>Approved</span><strong>@approved</strong><small>Authorised human decisions</small></article>
+</section>
+
+<section class="panel">
+    <div class="panel-heading">
+        <div><h2>Recent claims</h2><p>Open a claim to inspect the decision evidence.</p></div>
+        <span class="prototype-label">IN-MEMORY PROTOTYPE</span>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Reference</th><th>Employee</th><th>Merchant</th><th>Date</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var claim in Model)
+            {
+                <tr>
+                    <td><strong>@claim.ReferenceNumber</strong><small>@claim.Category</small></td>
+                    <td>@claim.EmployeeName</td>
+                    <td>@claim.Merchant</td>
+                    <td>@claim.TransactionDate.ToString("dd MMM yyyy")</td>
+                    <td class="amount">@claim.Currency @claim.Amount.ToString("N2")</td>
+                    <td><span class="status status-@claim.Status.Replace(" ", "").ToLowerInvariant()">@claim.Status</span></td>
+                    <td><a class="details-link" asp-action="Details" asp-route-id="@claim.Id">View →</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>

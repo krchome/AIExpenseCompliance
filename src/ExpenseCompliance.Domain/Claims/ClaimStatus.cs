@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+namespace ExpenseCompliance.Domain.Claims;
 
-namespace ExpenseCompliance.Domain.Claims
+public enum ClaimStatus
 {
-    public enum ClaimStatus
-    {
-        Draft, Processing, NeedsVerification, Submitted, UnderReview,
-        ClarificationRequested, FinanceReview, Approved, Rejected, Closed
-    }
-
+    Draft,
+    Processing,
+    NeedsVerification,
+    Submitted,
+    UnderReview,
+    ClarificationRequested,
+    FinanceReview,
+    Approved,
+    Rejected,
+    Closed
 }

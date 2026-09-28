@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+namespace ExpenseCompliance.Domain.Claims;
 
-namespace ExpenseCompliance.Domain.Claims
+public enum ExpenseCategory
 {
-    public enum ExpenseCategory
-    {
-        ClientMeal, Travel, Accommodation, Office
-    }
-
+    ClientMeal,
+    Travel,
+    Accommodation,
+    Office
 }
